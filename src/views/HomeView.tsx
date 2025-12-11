@@ -2,10 +2,12 @@ import Map from '../Map'
 import Hero from '../components/Hero'
 import MapLegend from '../components/MapLegend'
 import DataTable from '../components/DataTable'
+import DevNote from '../components/DevNote'
 
 function HomeView() {
   return (
     <>
+      <DevNote />
       <Hero />
       
       {/* Interactive Map Section */}

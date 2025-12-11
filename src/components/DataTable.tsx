@@ -348,7 +348,7 @@ const DataTable = () => {
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col md:flex-row items-center gap-2">
           <button
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
@@ -400,7 +400,7 @@ const DataTable = () => {
           <select
             value={table.getState().pagination.pageSize}
             onChange={(e) => table.setPageSize(Number(e.target.value))}
-            className="ml-2 px-2 py-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#253031]"
+            className="ml-2 px-2 py-1 border border-gray-300 text-[#253031] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#253031]"
           >
             {[25, 50, 100].map((pageSize) => (
               <option key={pageSize} value={pageSize}>
