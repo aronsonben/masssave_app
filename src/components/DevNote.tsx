@@ -1,10 +1,10 @@
-function Hero() {
+function DevNote() {
   return (
     <section className="bg-[#f3ecc8] py-4 px-8">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
         <div className="flex justify-center">
           <img 
-            src="src/assets/ben.png" 
+            src="public/ben.png"
             alt="Dev Note Headshot" 
             className="max-w-36 h-auto"
           />
@@ -25,4 +25,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default DevNote;
