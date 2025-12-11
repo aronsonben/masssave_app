@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: #ffffff;
+  background-color: #213547;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+
+  /**** Color Palette Pulled from Stylez.CSS *****/
+  /* Primary Brand Colors */
+  --color-bg-light: #FCFAF0; /* Floral White */
+  --color-text-dark: #253031; /* Dark Slate */
+  
+  /* Neutral Grays */
+  --color-gray-dark: #1a1a1a; /* Almost Black */
+  --color-gray-medium: #666; /* Medium Gray */
+  --color-gray-border: #333; /* Dark Gray */
+  --color-gray-border-light: #444; /* Charcoal */
+  --color-gray-border-lighter: #444c56; /* Cool Gray */
+  --color-gray-border-lightest: #30363d; /* Slate Gray */
+  --color-gray-disabled: #484f58; /* Grayish Blue */
+  --color-gray-light: #A9A9A9; /* Dark Gray */
+  --color-gray-text: #8b949e; /* Gray Blue */
+  --color-gray-text-light: #ccc; /* Light Gray */
+  
+  /* Code/Editor Theme Colors */
+  --color-code-bg: #0d1117; /* Raisin Black */
+  --color-code-text: #c9d1d9; /* Light Gray Blue */
+  --color-code-text-light: #f0f6fc; /* Ghost White */
+  --color-code-border: #30363d; /* Slate Gray */
+  
+  /* Accent Colors */
+  --color-blue-primary: #58a6ff; /* Dodger Blue */
+  
+  /* Button/Action Colors */
+  --color-btn-success-bg: #238636; /* Kelly Green */
+  --color-btn-success-border: #2ea043; /* Forest Green */
+  --color-btn-success-hover: #2ea043; /* Forest Green */
+  --color-btn-success-hover-border: #46954a; /* Sea Green */
+  --color-btn-success-disabled: #484f58; /* Grayish Blue */
+  
+  /* Form Colors */
+  --color-form-bg: #F8F5E8; /* Cornsilk */
+  --color-form-border: #D4C5A9; /* Khaki */
+  --color-form-text: #253031; /* Dark Slate */
+  --color-form-placeholder: #8b949e; /* Gray Blue */
+  
+  /* Status Message Colors */
+  --color-success-bg: #E8F5E8; /* Honeydew */
+  --color-success-border: #C3E6CB; /* Mint Green */
+  --color-success-text: #2F5233; /* Dark Forest Green */
+  
+  --color-error-bg: #F8E8E8; /* Misty Rose */
+  --color-error-border: #E6C3C3; /* Light Rose */
+  --color-error-text: #5A2F2F; /* Dark Brown Red */
+  --color-error-highlight: #ff6b6b; /* Light Red */
+  
+  /* Card Colors */
+  --color-card-bg: #F8F5E8; /* Cornsilk */
+  --color-card-border: #E6DCC6; /* Camel */
+  --color-card-bg-light: #F8F5E8; /* Cornsilk */
+  
+  /* Button/Text Colors */
+  --color-btn-bg: #253031; /* Dark Slate */
+  --color-btn-text: #FCFAF0; /* Floral White */
+  --color-btn-hover: #3A4041; /* Dark Gray Blue */
+  
+  /* Miscellaneous */
+  --color-blog-bg: pink; /* Pink */
+  --color-box-shadow: rgba(37, 48, 49, 0.1); /* Dark Slate (10% opacity) */
+  
+  /* Vintage/Legacy Colors */
+  --color-brown-dark: #6B5B47; /* Taupe */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+#root {
+  background-color: #213547;
+  width: 100%;
+  height: 100%;
+  /* padding: 2rem 0; */
+}
+
+/* 
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */

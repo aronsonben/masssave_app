@@ -1,0 +1,162 @@
+import { MapContainer, TileLayer, GeoJSON, LayersControl } from 'react-leaflet';
+import { Layer } from 'leaflet';
+import { useEffect, useState } from 'react';
+import type { Feature, FeatureCollection, Geometry } from 'geojson';
+import 'leaflet/dist/leaflet.css';
+import { PARTICIPATION_BUCKETS } from './types/mock';
+
+interface MassSaveFeature extends Feature {
+  properties: {
+    town: string;
+    electric_participation_rate_avg: number;
+    gas_participation_rate_avg: number;
+    REJ__flag_: string;
+    POPULATION: number;
+    [key: string]: string | number;
+  };
+  geometry: Geometry;
+}
+
+/** Define the popup */
+const onEachFeature = (feature: MassSaveFeature, layer: Layer) => {
+  const props = feature.properties;
+  const electricRateAvg = props.electric_participation_rate_avg || 0;
+  const gasRateAvg = props.gas_participation_rate_avg || 0;
+  const popupContent = `
+        <div class="p-2 max-w-xs">
+        <h3 class="font-bold">${props.town}</h3>
+        <p><strong>Population:</strong> ${props.POPULATION}</p>
+        <p><strong>Electric Participation:</strong> ${electricRateAvg.toFixed(2)}%</p>
+        <p><strong>Gas Participation:</strong> ${gasRateAvg.toFixed(2)}%</p>
+        <p><strong>REJ Status:</strong> ${props.REJ__flag_}</p>
+        </div>
+    `;
+  layer.bindPopup(popupContent);
+};
+
+const getColor = (participation: number) => {
+  const bucket = PARTICIPATION_BUCKETS.find(b => b.test(participation));
+  return bucket?.color ?? '#cccccc';
+}
+
+const getPopulationColor = (population: number) => {
+  if (population === 0) return '#efefef'
+  if (population < 5000) return '#fee0d2'
+  if (population < 10000) return '#fc9272'
+  if (population < 25000) return '#de2d26'
+  return '#a50f15'
+}
+
+const getStatusColor = (status?: string) => {
+  if (status === 'Yes') return '#1a9850'
+  if (status === 'No') return '#dcdcdc'
+  return '#bdbdbd'
+}
+
+type LayerConfig = {
+  key: keyof MassSaveFeature['properties'];
+  name: string;
+  defaultVisible?: boolean;
+  getFillColor: (props?: MassSaveFeature['properties']) => string;
+}
+
+const polygonBaseStyle = {
+  weight: 1,
+  opacity: 0.8,
+  color: '#666',
+  fillOpacity: 0.7,
+}
+
+const propertyLayers: LayerConfig[] = [
+  {
+    key: 'electric_participation_rate_avg',
+    name: 'Electric Participation Rate',
+    defaultVisible: true,
+    getFillColor: props => getColor(props?.electric_participation_rate_avg ?? 0),
+  },
+  {
+    key: 'gas_participation_rate_avg',
+    name: 'Gas Participation Rate',
+    getFillColor: props => getColor(props?.gas_participation_rate_avg ?? 0),
+  },
+  {
+    key: 'POPULATION',
+    name: 'Population',
+    getFillColor: props => getPopulationColor(Number(props?.POPULATION ?? 0)),
+  },
+  {
+    key: 'REJ__flag_',
+    name: 'REJ Status',
+    getFillColor: props => getStatusColor(String(props?.REJ__flag_ ?? '')), 
+  },
+]
+
+function GeoJSONMap() {
+  const [geoJsonData, setGeoJsonData] = useState<FeatureCollection<Geometry, MassSaveFeature['properties']> | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+    // Determine the GeoJSON URL based on environment
+  const getGeoJsonUrl = () => {
+    if (false) {
+      return '/data/rej_with_masssave_participation.geojson';
+    } else {
+      return '/api/geojson';
+    }
+  };
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const loadGeoJson = async () => {
+      try {
+        setError(null);
+        const url = getGeoJsonUrl();
+        const response = await fetch(url, {
+          signal: controller.signal,
+        });
+        if (!response.ok) {
+          throw new Error(`Request failed: ${response.status}`);
+        }
+        const data = await response.json() as FeatureCollection<Geometry, MassSaveFeature['properties']>;
+        setGeoJsonData(data);
+      } catch (err) {
+        if (err instanceof DOMException && err.name === 'AbortError') return;
+        setError(err instanceof Error ? err.message : 'Unknown error');
+      }
+    };
+    loadGeoJson();
+    return () => controller.abort();
+  }, []);
+
+  return (
+    <MapContainer center={[42.3, -71.8]} zoom={8} style={{ height: '100%', width: '100%' }}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution="&copy; OpenStreetMap contributors"
+      />
+      <LayersControl position="topright">
+        {geoJsonData && propertyLayers.map(layer => (
+          <LayersControl.Overlay
+            key={String(layer.key)}
+            name={layer.name}
+            checked={layer.defaultVisible}
+          >
+            <GeoJSON
+              data={geoJsonData}
+              style={(feature?: Feature<Geometry, MassSaveFeature['properties']>) => {
+                const props = (feature as MassSaveFeature | undefined)?.properties;
+                return {
+                  ...polygonBaseStyle,
+                  fillColor: layer.getFillColor(props),
+                };
+              }}
+              onEachFeature={onEachFeature}
+            />
+          </LayersControl.Overlay>
+        ))}
+        {error && <p className="text-red-500">{error}</p>}
+      </LayersControl>
+    </MapContainer>
+  );
+}
+
+export default GeoJSONMap;
