@@ -3,8 +3,13 @@ import Hero from '../components/Hero'
 import MapLegend from '../components/MapLegend'
 import DataTable from '../components/DataTable'
 import DevNote from '../components/DevNote'
+import type { ViewType } from '../types/types'
 
-function HomeView() {
+interface HomeViewProps {
+  onViewChange: (view: ViewType) => void
+}
+
+function HomeView({ onViewChange }: HomeViewProps) {
   return (
     <>
       <DevNote />
@@ -26,7 +31,12 @@ function HomeView() {
           </div>
         </div>
         <div className="flex justify-center items-center mt-8 text-sm text-gray-600">
-          <p>Click here to view map full screen</p>
+          <button 
+            onClick={() => onViewChange('map')}
+            className="hover:underline cursor-pointer"
+          >
+            Click here to view map full screen
+          </button>
         </div>
       </section>
 
@@ -39,7 +49,12 @@ function HomeView() {
           <DataTable />
         </div>
         <div className="flex justify-center items-center mt-8 text-sm text-gray-600">
-          <p>Click here to dig deeper</p>
+          <button 
+            onClick={() => onViewChange('table')}
+            className="hover:underline cursor-pointer"
+          >
+            Click here to dig deeper
+          </button>
         </div>
       </section>
 

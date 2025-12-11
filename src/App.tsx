@@ -12,7 +12,7 @@ function App() {
   const renderView = () => {
     switch (currentView) {
       case 'home':
-        return <HomeView />
+        return <HomeView onViewChange={setCurrentView} />
       case 'map':
         return <MapView />
       case 'table':
@@ -20,7 +20,7 @@ function App() {
       case 'about':
         return <AboutView />
       default:
-        return <HomeView />
+        return <HomeView onViewChange={setCurrentView} />
     }
   }
 
@@ -30,9 +30,10 @@ function App() {
       {renderView()}
 
       {/* Footer */}
-      <footer className="bg-[#253031] text-[#FCFAF0] py-6 px-8 mt-12">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="opacity-75">Data visualization for MassSave and REJ analysis</p>
+      <footer className="bg-[#253031] text-[#FCFAF0] py-2 px-8 mt-12">
+        <div className="flex items-center justify-center gap-2 max-w-7xl mx-auto italic font-mono text-xs">
+          <img src="/monstera.png" alt="monstera leaf" className="w-6 h-6 opacity-75"/>
+          <p className="opacity-75">this has been another <a href="https://concourse.codes" className="underline font-bold" target="_blank" rel="noopener noreferrer">Concourse Codes</a> creation.</p>
         </div>
       </footer>
     </div>

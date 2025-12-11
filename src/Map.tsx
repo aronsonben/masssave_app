@@ -97,7 +97,7 @@ function GeoJSONMap() {
 
     // Determine the GeoJSON URL based on environment
   const getGeoJsonUrl = () => {
-    if (false) {
+    if (import.meta.env.MODE === 'development') {
       return '/data/rej_with_masssave_participation.geojson';
     } else {
       return '/api/geojson';
