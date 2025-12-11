@@ -4,7 +4,7 @@ function DevNote() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
         <div className="flex justify-center">
           <img 
-            src="public/ben.png"
+            src="/ben.png"
             alt="Dev Note Headshot" 
             className="max-w-36 h-auto"
           />

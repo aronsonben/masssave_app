@@ -14,7 +14,7 @@ function Hero() {
         </div>
         <div className="flex justify-center">
           <img 
-            src="public/massmaptest.png" 
+            src="/massmaptest.png" 
             alt="Massachusetts Map Overview" 
             className="max-w-full h-auto rounded-lg shadow-lg"
           />
