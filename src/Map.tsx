@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, GeoJSON, LayersControl, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, LayersControl } from 'react-leaflet';
 import { Layer } from 'leaflet';
 import * as L from 'leaflet';
 import { useEffect, useState } from 'react';
