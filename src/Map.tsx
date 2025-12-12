@@ -1,5 +1,6 @@
-import { MapContainer, TileLayer, GeoJSON, LayersControl } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, LayersControl, Popup } from 'react-leaflet';
 import { Layer } from 'leaflet';
+import * as L from 'leaflet';
 import { useEffect, useState } from 'react';
 import type { Feature, FeatureCollection, Geometry } from 'geojson';
 import 'leaflet/dist/leaflet.css';
@@ -23,15 +24,101 @@ const onEachFeature = (feature: MassSaveFeature, layer: Layer) => {
   const electricRateAvg = props.electric_participation_rate_avg || 0;
   const gasRateAvg = props.gas_participation_rate_avg || 0;
   const popupContent = `
-        <div class="p-2 max-w-xs">
-        <h3 class="font-bold">${props.town}</h3>
-        <p><strong>Population:</strong> ${props.POPULATION}</p>
-        <p><strong>Electric Participation:</strong> ${electricRateAvg.toFixed(2)}%</p>
-        <p><strong>Gas Participation:</strong> ${gasRateAvg.toFixed(2)}%</p>
-        <p><strong>REJ Status:</strong> ${props.REJ__flag_}</p>
+        <div style="
+          padding: 16px; 
+          background-color: #FCFAF0; 
+          border: 1px solid #253031;
+          border-radius: 10px;
+          font-family: 'OlympicSans', sans-serif;
+          color: #253031;
+        ">
+          <h3 style="
+            font-family: 'OlympicSerif', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 0 0 12px 0;
+            color: #253031;
+            text-align: center;
+            text-transform: capitalize;
+          ">${props.town}</h3>
+          <table style="
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+          ">
+            <tr style="
+              background-color: #F8F5E8;
+              transition: background-color 0.2s ease;
+            " onmouseover="this.style.backgroundColor='#E6DCC6'" onmouseout="this.style.backgroundColor='#F8F5E8'">
+              <td style="
+                padding: 8px 12px;
+                font-family: 'OlympicSans-Bold', sans-serif;
+                font-weight: bold;
+                width: 60%;
+              ">Population:</td>
+              <td style="
+                padding: 8px 12px;
+                font-family: 'OlympicSans', sans-serif;
+              ">${props.POPULATION.toLocaleString()}</td>
+            </tr>
+            <tr style="
+              background-color: #FCFAF0;
+              transition: background-color 0.2s ease;
+            " onmouseover="this.style.backgroundColor='#E6DCC6'" onmouseout="this.style.backgroundColor='#FCFAF0'">
+              <td style="
+                padding: 8px 12px;
+                font-family: 'OlympicSans-Bold', sans-serif;
+                font-weight: bold;
+              ">Electric Participation:</td>
+              <td style="
+                padding: 8px 12px;
+                font-family: 'OlympicSans', sans-serif;
+              ">${electricRateAvg.toFixed(2)}%</td>
+            </tr>
+            <tr style="
+              background-color: #F8F5E8;
+              transition: background-color 0.2s ease;
+            " onmouseover="this.style.backgroundColor='#E6DCC6'" onmouseout="this.style.backgroundColor='#F8F5E8'">
+              <td style="
+                padding: 8px 12px;
+                font-family: 'OlympicSans-Bold', sans-serif;
+                font-weight: bold;
+              ">Gas Participation:</td>
+              <td style="
+                padding: 8px 12px;
+                font-family: 'OlympicSans', sans-serif;
+              ">${gasRateAvg.toFixed(2)}%</td>
+            </tr>
+            <tr style="
+              background-color: #FCFAF0;
+              transition: background-color 0.2s ease;
+            " onmouseover="this.style.backgroundColor='#E6DCC6'" onmouseout="this.style.backgroundColor='#FCFAF0'">
+              <td style="
+                padding: 8px 12px;
+                font-family: 'OlympicSans-Bold', sans-serif;
+                font-weight: bold;
+              ">REJ Status:</td>
+              <td style="
+                padding: 8px 12px;
+                font-family: 'OlympicSans', sans-serif;
+              ">${props.REJ__flag_}</td>
+            </tr>
+          </table>
         </div>
     `;
-  layer.bindPopup(popupContent);
+
+  // Create popup with options
+  const popup = L.popup({
+    maxWidth: 300,
+    minWidth: 250,
+    autoPan: true,
+    closeButton: true,
+    autoClose: false,
+    closeOnEscapeKey: true,
+    className: 'custom-popup'
+  }).setContent(popupContent);
+
+  layer.bindPopup(popup);
 };
 
 const getColor = (participation: number) => {

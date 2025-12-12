@@ -35,13 +35,13 @@ export function useMapLegend() {
       case 'electric_participation_rate_avg':
         return {
           id: layerKey,
-          title: 'Electric Participation Rate',
+          title: 'Avg. Electric Participation Rate',
           buckets: PARTICIPATION_BUCKETS
         }
       case 'gas_participation_rate_avg':
         return {
           id: layerKey,
-          title: 'Gas Participation Rate',
+          title: 'Avg. Gas Participation Rate',
           buckets: PARTICIPATION_BUCKETS_GAS
         }
       case 'POPULATION':

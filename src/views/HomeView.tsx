@@ -20,9 +20,15 @@ function HomeView({ onViewChange }: HomeViewProps) {
       {/* Interactive Map Section */}
       <section className="py-12 px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-[OlympicSerif-Bold] text-[#253031] mb-6">
+          <h2 className="text-3xl font-[OlympicSerif-Bold] text-[#253031] mb-4">
             MassSave + REJ: At A Glance
           </h2>
+          <p className="text-[#253031] font-sans leading-relaxed mb-4">
+            Explore the map below to view MassSave participation rates across Census Tracts. &nbsp;
+            <a href="#important-note" className="text-sm font-mono font-bold underline cursor-pointer">
+             Important note on data.
+            </a>
+          </p>
           <div className="grid lg:grid-cols-[1fr_280px] gap-6">
             <div className="h-[600px] rounded-lg overflow-hidden shadow-lg border border-gray-200">
               <Map onLayerToggle={toggleLayer} />
@@ -31,6 +37,12 @@ function HomeView({ onViewChange }: HomeViewProps) {
               <MapLegend legendConfigs={legendConfigs} />
             </div>
           </div>
+        </div>
+        <div className="flex justify-center items-center mt-4 text-sm text-gray-600">
+          <span id="important-note">
+            <strong className="font-[OlympicSans-Bold]">Important Note:</strong> Not all data was fully transformed during the processing stage.
+            As a result, some census tract areas may be missing data. I am actively working to resolve this issue.
+          </span>
         </div>
         <div className="flex justify-center items-center mt-8 text-sm text-gray-600">
           <button 
@@ -45,9 +57,12 @@ function HomeView({ onViewChange }: HomeViewProps) {
       {/* Data Table Section */}
       <section className="py-12 px-8 bg-[#FCFAF0]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-serif font-bold text-[#253031] mb-6">
+          <h2 className="text-3xl font-serif font-bold text-[#253031] mb-4">
             Explore the Data
           </h2>
+          <p className="text-[#253031] font-sans leading-relaxed mb-4">
+            Explore the table below to view cross-sectional data on MassSave participation rates and state REJ areas.&nbsp;
+          </p>
           <DataTable />
         </div>
         <div className="flex justify-center items-center mt-8 text-sm text-gray-600">

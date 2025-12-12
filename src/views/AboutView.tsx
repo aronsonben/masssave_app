@@ -3,13 +3,13 @@ function AboutView() {
     <section className="py-12 bg-white min-h-[calc(100vh-200px)]">
       <div className="max-w-7xl px-8 mx-auto py-4 mb-8 ">
         <h2 className="text-3xl font-serif font-bold text-[#253031] mb-6">
-          About
+          About the Project
         </h2>
         <div className="flex flex-col gap-3 max-w-none">
           <p className="text-[#253031] leading-relaxed">
-            This website provides a cross-sectional analysis of <b>MassSave Participation Data </b>
-            against the State of Massachusetts' <b>Regional Environmental Justice</b> areas.  
-            Read more about the data below.
+            This website provides a <strong>cross-sectional analysis of <b>MassSave Participation Data </b>
+            and the State of Massachusetts' <b>Regional Environmental Justice</b> areas.</strong> 
+            &nbsp; Read more about the data below.
           </p>
           <p className="text-[#253031] leading-relaxed">
             The <b>goal</b> of this project was to observe if the success rate of the state's hallmark energy
@@ -18,7 +18,7 @@ function AboutView() {
           </p>
           <p className="text-[#253031] leading-relaxed">
             The primary motivation behind this project was simply curiosity. However, if you'd like to read more
-            about the events that catalyzed this research, my research strategy, and the technical deetails behind
+            about the events that catalyzed this research, my research strategy, and the technical details behind
             the project, please click the link here to navigate to the three-part blog post series: 
             <em className="text-xs italic"> Coming soon! </em>
           </p>

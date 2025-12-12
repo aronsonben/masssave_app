@@ -231,3 +231,20 @@ body {
   font-weight: 700;
   font-style: italic;
 }
+
+strong {
+  font-family: "OlympicSans-Bold", 'system-ui', Avenir, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+/* .leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+  width: auto !important;
+} */
+
+/* Specific styling for your custom popup */
+.custom-popup .leaflet-popup-content {
+  margin: 0;
+}
+
