@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import MapLegend from '../components/MapLegend'
 import DataTable from '../components/DataTable'
 import DevNote from '../components/DevNote'
+import { useMapLegend } from '../hooks/useMapLegend'
 import type { ViewType } from '../types/types'
 
 interface HomeViewProps {
@@ -10,6 +11,7 @@ interface HomeViewProps {
 }
 
 function HomeView({ onViewChange }: HomeViewProps) {
+  const { toggleLayer, legendConfigs } = useMapLegend()
   return (
     <>
       <DevNote />
@@ -18,15 +20,15 @@ function HomeView({ onViewChange }: HomeViewProps) {
       {/* Interactive Map Section */}
       <section className="py-12 px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-serif font-bold text-[#253031] mb-6">
+          <h2 className="text-3xl font-[OlympicSerif-Bold] text-[#253031] mb-6">
             MassSave + REJ: At A Glance
           </h2>
           <div className="grid lg:grid-cols-[1fr_280px] gap-6">
             <div className="h-[600px] rounded-lg overflow-hidden shadow-lg border border-gray-200">
-              <Map />
+              <Map onLayerToggle={toggleLayer} />
             </div>
             <div className="lg:sticky lg:top-6 self-start">
-              <MapLegend />
+              <MapLegend legendConfigs={legendConfigs} />
             </div>
           </div>
         </div>
@@ -66,10 +68,8 @@ function HomeView({ onViewChange }: HomeViewProps) {
           </h2>
           <div className="prose prose-lg max-w-none">
             <p className="text-[#253031] leading-relaxed">
-              The MassSave program provides energy efficiency services across Massachusetts, 
-              yet participation rates vary significantly by region. Understanding these 
-              disparities—especially in Regional Environmental Justice (REJ) communities—is 
-              crucial for ensuring equitable access to energy savings and climate benefits.
+              Key findings & related blog post series coming soon. 
+              Please <span onClick={() => onViewChange('about')} className="text-blue-600 cursor-pointer underline">check out the About page</span> for more information in the meantime.
             </p>
           </div>
         </div>

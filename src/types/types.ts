@@ -27,5 +27,13 @@ export interface MassSaveDataRow {
   block_group_count: number;
 }
 
+export interface Bucket {
+  id: string;
+  label: string;
+  range: [number, number];
+  color: string;
+  test: (p: number) => boolean;
+}
+
 /***** MISC. ******/
 export type ViewType = 'home' | 'map' | 'table' | 'about';

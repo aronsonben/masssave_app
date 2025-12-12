@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: 'OlympicSerif', Georgia, 'Times New Roman', Times, serif;
+  --font-sans: 'OlympicSans', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif';
+  --font-mono: 'Ubuntu Mono', 'Courier New', Courier, monospace;
+
+  --color-silly-billy: rgb(25, 208, 225); /* test variable */
+}
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'OlympicSans', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -81,6 +88,9 @@
   
   /* Vintage/Legacy Colors */
   --color-brown-dark: #6B5B47; /* Taupe */
+
+  /* Test */
+  --silly-billy: 25 208 225;
 }
 
 body {
@@ -100,69 +110,124 @@ body {
   /* padding: 2rem 0; */
 }
 
-/* 
-a {
+@font-face {
+  font-family: 'OlympicSans';
+  src: url('/fonts/olympicsans/OlympicSans.woff2') format('woff2'),
+       url('/fonts/olympicsans/OlympicSans.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OlympicSans-Italic';
+  src: url('/fonts/olympicsans/OlympicSans-Italic.woff2') format('woff2'),
+       url('/fonts/olympicsans/OlympicSans-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'OlympicSans-Medium';
+  src: url('/fonts/olympicsans/OlympicSans-Medium.woff2') format('woff2'),
+       url('/fonts/olympicsans/OlympicSans-Medium.woff') format('woff');
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  font-style: normal;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  width: 100%;
-}
-
-#root {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+@font-face {
+  font-family: 'OlympicSans-MediumItalic';
+  src: url('/fonts/olympicsans/OlympicSans-MediumItalic.woff2') format('woff2'),
+       url('/fonts/olympicsans/OlympicSans-MediumItalic.woff') format('woff');
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-style: italic;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
+@font-face {
+  font-family: 'OlympicSans-Bold';
+  src: url('/fonts/olympicsans/OlympicSans-Bold.woff2') format('woff2'),
+       url('/fonts/olympicsans/OlympicSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OlympicSans-BoldItalic';
+  src: url('/fonts/olympicsans/OlympicSans-BoldItalic.woff2') format('woff2'),
+       url('/fonts/olympicsans/OlympicSans-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* **** Olympic Serif **** */
+
+@font-face {
+  font-family: 'OlympicSerif';
+  src: url('/fonts/olympicserif/OlympicSerif.woff2') format('woff2'),
+       url('/fonts/olympicserif/OlympicSerif.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OlympicSerif-Italic';
+  src: url('/fonts/olympicserif/OlympicSerif-Italic.woff2') format('woff2'),
+       url('/fonts/olympicserif/OlympicSerif-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'OlympicSerif-Medium';
+  src: url('/fonts/olympicserif/OlympicSerif-Medium.woff2') format('woff2'),
+       url('/fonts/olympicserif/OlympicSerif-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OlympicSerif-MediumItalic';
+  src: url('/fonts/olympicserif/OlympicSerif-MediumItalic.woff2') format('woff2'),
+       url('/fonts/olympicserif/OlympicSerif-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'OlympicSerif-Bold';
+  src: url('/fonts/olympicserif/OlympicSerif-Bold.woff2') format('woff2'),
+       url('/fonts/olympicserif/OlympicSerif-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OlympicSerif-BoldItalic';
+  src: url('/fonts/olympicserif/OlympicSerif-BoldItalic.woff2') format('woff2'),
+       url('/fonts/olympicserif/OlympicSerif-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+.ubuntu-mono-regular {
+  font-family: "Ubuntu Mono", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ubuntu-mono-bold {
+  font-family: "Ubuntu Mono", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ubuntu-mono-regular-italic {
+  font-family: "Ubuntu Mono", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ubuntu-mono-bold-italic {
+  font-family: "Ubuntu Mono", serif;
+  font-weight: 700;
+  font-style: italic;
+}

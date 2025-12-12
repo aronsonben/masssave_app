@@ -23,7 +23,7 @@ function Header({ currentView, onViewChange }: HeaderProps) {
               onClick={() => onViewChange(btn.view)}
               className={`px-5 py-0.5 text-xs font-sans border border-gray-400 rounded transition-all duration-300 ${
                 currentView === btn.view 
-                  ? 'bg-gradient-to-b from-gray-400 to-gray-600 text-white font-semibold' 
+                  ? 'bg-linear-to-b from-gray-400 to-gray-600 text-white font-semibold' 
                   : `text-gray-300 ${btn.gradient}`
               }`}
             >
@@ -31,10 +31,15 @@ function Header({ currentView, onViewChange }: HeaderProps) {
             </button>
           ))}
         </div>
-        <div className="flex justify-between items-start">
-          <div>
-            <h1 className="text-4xl font-serif font-bold">MassSave & Regional Environmental Justice</h1>
-            <p className="text-lg mt-2 opacity-90">Energy Efficiency Participation in Massachusetts</p>
+        <div className="flex flex-col md:flex-row justify-start items-center gap-8 py-4">
+          <div className="">
+            <img src="/img/ma_scene.png" alt="Massachusetts scene" className="w-28 h-auto rounded-lg transition duration-300 transform hover:scale-105"/>
+          </div>
+          <div className="flex flex-col">
+            <h1 className="text-4xl font-serif font-bold ubuntu-mono-regular pb-4">Is MassSave Environmentally Just?</h1>
+            <p className="opacity-90 font-['OlympicSans-Italic']">
+              A Cross-Sectional Analysis of MassSave and Regional Environmental Justice Areas in Massachusetts
+            </p>
           </div>
         </div>
       </div>

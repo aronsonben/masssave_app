@@ -3,7 +3,7 @@ import { Layer } from 'leaflet';
 import { useEffect, useState } from 'react';
 import type { Feature, FeatureCollection, Geometry } from 'geojson';
 import 'leaflet/dist/leaflet.css';
-import { PARTICIPATION_BUCKETS } from './types/mock';
+import { PARTICIPATION_BUCKETS } from './types/buckets';
 
 interface MassSaveFeature extends Feature {
   properties: {
@@ -91,7 +91,11 @@ const propertyLayers: LayerConfig[] = [
   },
 ]
 
-function GeoJSONMap() {
+interface GeoJSONMapProps {
+  onLayerToggle?: (layerKey: string, isActive: boolean) => void;
+}
+
+function GeoJSONMap({ onLayerToggle }: GeoJSONMapProps) {
   const [geoJsonData, setGeoJsonData] = useState<FeatureCollection<Geometry, MassSaveFeature['properties']> | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -109,14 +113,11 @@ function GeoJSONMap() {
       try {
         setError(null);
         const url = getGeoJsonUrl();
-        console.log("Fetching geoJSON data from URL: ", url);
         const response = await fetch(url);
         if (!response.ok) {
-          console.log("Got a bad response from s3 fetch: ", response.status);
           throw new Error(`Request failed: ${response.status}`);
         }
         const data = await response.json() as FeatureCollection<Geometry, MassSaveFeature['properties']>;
-        console.log("We got geoJSon data from fetch: ", data);
         setGeoJsonData(data);
       } catch (err) {
         console.log("Map Error: ", err);
@@ -140,6 +141,10 @@ function GeoJSONMap() {
             checked={layer.defaultVisible}
           >
             <GeoJSON
+              eventHandlers={{
+                add: () => onLayerToggle?.(String(layer.key), true),
+                remove: () => onLayerToggle?.(String(layer.key), false),
+              }}
               data={geoJsonData}
               style={(feature?: Feature<Geometry, MassSaveFeature['properties']>) => {
                 const props = (feature as MassSaveFeature | undefined)?.properties;

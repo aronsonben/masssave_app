@@ -1,7 +1,7 @@
 function AboutView() {
   return (
     <section className="py-12 bg-white min-h-[calc(100vh-200px)]">
-      <div className="px-8 mx-auto py-4 mb-8 ">
+      <div className="max-w-7xl px-8 mx-auto py-4 mb-8 ">
         <h2 className="text-3xl font-serif font-bold text-[#253031] mb-6">
           About
         </h2>
@@ -43,33 +43,29 @@ function AboutView() {
         </h2>
         <div className="prose prose-lg max-w-none">
           <p className="text-[#253031] leading-relaxed">
-            The MassSave program provides energy efficiency services across Massachusetts, 
-            yet participation rates vary significantly by region. Understanding these 
-            disparities—especially in Regional Environmental Justice (REJ) communities—is 
-            crucial for ensuring equitable access to energy savings and climate benefits.
+            Both datasets have been provided as graciously open source. 
+            Thank you to MassSave and MassDOT for making this data publicly available.
           </p>
-          <p className="text-[#253031] leading-relaxed">
-            <ul>
-              <li>
-                <b>MassSave Data: </b>
-                <a href="https://www.masssavedata.com/Public/GoogleEarth" 
-                  target="_blank" 
-                  about="link to masssave data"
-                  className="text-blue-600 underline">
-                  https://www.masssavedata.com/Public/GoogleEarth
-                </a>
-              </li>
-              <li>
-                <b>REJ Data: </b>
-                <a href="https://geodot-massdot.hub.arcgis.com/datasets/MassDOT::rej-by-census-tracts-2025/about"
-                  target="_blank" 
-                  about="link to rej data"
-                  className="text-blue-600 underline">
-                    https://geodot-massdot.hub.arcgis.com/datasets/MassDOT::rej-by-census-tracts-2025/about
-                </a>
-              </li>
-            </ul>
-          </p>
+          <ul className="text-[#253031] leading-relaxed mt-2">
+            <li>
+              <b>MassSave Data: </b>
+              <a href="https://www.masssavedata.com/Public/GoogleEarth" 
+                target="_blank" 
+                about="link to masssave data"
+                className="text-blue-600 underline">
+                https://www.masssavedata.com/Public/GoogleEarth
+              </a>
+            </li>
+            <li>
+              <b>REJ Data: </b>
+              <a href="https://geodot-massdot.hub.arcgis.com/datasets/MassDOT::rej-by-census-tracts-2025/about"
+                target="_blank" 
+                about="link to rej data"
+                className="text-blue-600 underline">
+                  https://geodot-massdot.hub.arcgis.com/datasets/MassDOT::rej-by-census-tracts-2025/about
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
