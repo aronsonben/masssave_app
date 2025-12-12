@@ -105,26 +105,25 @@ function GeoJSONMap() {
   };
 
   useEffect(() => {
-    const controller = new AbortController();
     const loadGeoJson = async () => {
       try {
         setError(null);
         const url = getGeoJsonUrl();
-        const response = await fetch(url, {
-          signal: controller.signal,
-        });
+        console.log("Fetching geoJSON data from URL: ", url);
+        const response = await fetch(url);
         if (!response.ok) {
+          console.log("Got a bad response from s3 fetch: ", response.status);
           throw new Error(`Request failed: ${response.status}`);
         }
         const data = await response.json() as FeatureCollection<Geometry, MassSaveFeature['properties']>;
+        console.log("We got geoJSon data from fetch: ", data);
         setGeoJsonData(data);
       } catch (err) {
-        if (err instanceof DOMException && err.name === 'AbortError') return;
+        console.log("Map Error: ", err);
         setError(err instanceof Error ? err.message : 'Unknown error');
       }
     };
     loadGeoJson();
-    return () => controller.abort();
   }, []);
 
   return (

@@ -1,7 +1,7 @@
 function AboutView() {
   return (
     <section className="py-12 bg-white min-h-[calc(100vh-200px)]">
-      <div className="max-w-7xl px-8 mx-auto py-4 mb-8 ">
+      <div className="px-8 mx-auto py-4 mb-8 ">
         <h2 className="text-3xl font-serif font-bold text-[#253031] mb-6">
           About
         </h2>
