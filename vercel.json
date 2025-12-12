@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/api/geojson",
+      "destination": "https://concourse-codes.s3.amazonaws.com/MassSave/rej_with_masssave_participation.geojson"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
