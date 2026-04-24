@@ -2,7 +2,6 @@ import Map from '../Map'
 import Hero from '../components/Hero'
 import MapLegend from '../components/MapLegend'
 import DataTable from '../components/DataTable'
-import DevNote from '../components/DevNote'
 import { useMapLegend } from '../hooks/useMapLegend'
 import type { ViewType } from '../types/types'
 
