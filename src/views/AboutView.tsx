@@ -20,7 +20,12 @@ function AboutView() {
             The primary motivation behind this project was simply curiosity. However, if you'd like to read more
             about the events that catalyzed this research, my research strategy, and the technical details behind
             the project, please click the link here to navigate to the three-part blog post series: 
-            <em className="text-xs italic"> Coming soon! </em>
+          </p>
+          <p className="text-[#253031] leading-relaxed">
+            Part 1 is now live! Click the link below to read on. 
+          </p>
+          <p className="text-[#253031] leading-relaxed">
+            <a href="https://concourse.pika.page/posts/is-masssave-environmentally-just" target="_blank" className="underline"><i>Is MassSave Environmentally Just? (Part 1)</i></a>{' '}
           </p>
           <p className="text-[#253031] leading-relaxed">
             Thanks all! <br/> - Ben 
@@ -33,7 +38,21 @@ function AboutView() {
         </h2>
         <div className="prose prose-lg max-w-none">
           <p className="text-[#253031] leading-relaxed">
-            Key findings coming soon.
+            Read about the key findings in the blog series here:{' '}
+            <a href="https://concourse.pika.page/posts/is-masssave-environmentally-just" target="_blank" className="underline"><i>Is MassSave Environmentally Just? (Part 1)</i></a>{' '}
+          </p>
+          <p className="text-[#253031] leading-relaxed">
+            
+          </p>
+          <p className="text-[#253031] leading-relaxed my-2">
+            <strong>TL;DR -</strong> he difference between REJ areas and non-REJ areas is NOT statistically significant for participation in the MassSave electric program, but it IS statistically significant for participation in the gas program. {' '}
+          </p>
+          <p className="text-[#253031] leading-relaxed my-2">
+            This analysis suggests that <strong>MassSave IS environmentally just</strong> for its <span className="bg-yellow-400 px-2 py-1 rounded-md">electric program</span> {' '}
+            but <strong>has a little bit of work to do</strong> for it's <span className="bg-orange-400 px-2 py-1 rounded-md">gas program</span>. I speculate on this more in Part 3 of the blog series.
+          </p>
+           <p className="text-[#253031] leading-relaxed my-2">
+            I speculate on this more in Part 3 of the blog series. Stay tuned!
           </p>
         </div>
       </div>

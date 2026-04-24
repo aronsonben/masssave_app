@@ -5,6 +5,8 @@ import HomeView from './views/HomeView'
 import MapView from './views/MapView'
 import TableView from './views/TableView'
 import AboutView from './views/AboutView'
+import Footer from './components/Footer'
+import DevNote from './components/DevNote'
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('home')
@@ -29,13 +31,8 @@ function App() {
       <Header currentView={currentView} onViewChange={setCurrentView} />
       {renderView()}
 
-      {/* Footer */}
-      <footer className="bg-[#253031] text-[#FCFAF0] py-2 px-8 mt-12">
-        <div className="flex items-center justify-center gap-2 max-w-7xl mx-auto italic font-mono text-xs">
-          <img src="/monstera.png" alt="monstera leaf" className="w-6 h-6 opacity-75"/>
-          <p className="opacity-75">this has been another <a href="https://concourse.codes" className="underline font-bold" target="_blank" rel="noopener noreferrer">Concourse Codes</a> creation.</p>
-        </div>
-      </footer>
+      <DevNote />
+      <Footer />
     </div>
   )
 }

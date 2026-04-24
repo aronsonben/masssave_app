@@ -12,8 +12,8 @@ function DevNote() {
         <div className="flex flex-col items-start justify-center">
           <p className="text-sm text-[#253031] font-mono leading-relaxed">
             <span className="font-sans font-bold text-[#253031] bg-pink-300 px-2 py-1 rounded-md">Dev Note:</span>
-            &nbsp; If you're seeing this banner, this site is still a work in progress! 
-            All data displays are working. Thanks for your understanding. :) - Ben
+            &nbsp; Hey! It's Ben. Thanks for visiting. The site should be fully working now. {' '} 
+            <a href="https://concourse.codes/contact.html" target="_blank" className="underline">Reach out here</a> if you have any questions. :) - Ben
           </p>
         </div>
       </div>

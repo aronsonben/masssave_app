@@ -14,7 +14,6 @@ function HomeView({ onViewChange }: HomeViewProps) {
   const { toggleLayer, legendConfigs } = useMapLegend()
   return (
     <>
-      <DevNote />
       <Hero />
       
       {/* Interactive Map Section */}
@@ -82,9 +81,12 @@ function HomeView({ onViewChange }: HomeViewProps) {
             Key Findings
           </h2>
           <div className="prose prose-lg max-w-none">
+            <p onClick={() => onViewChange('about')} className="text-[#253031] leading-relaxed underline cursor-pointer font-bold">
+              The Key Findings page is now live!
+            </p>
             <p className="text-[#253031] leading-relaxed">
-              Key findings & related blog post series coming soon. 
-              Please <span onClick={() => onViewChange('about')} className="text-blue-600 cursor-pointer underline">check out the About page</span> for more information in the meantime.
+              Follow along with the accompanying blog posts on {' '}
+              <a href="https://concourse.pika.page/posts/is-masssave-environmentally-just" target="_blank" className="underline"><i>The Concourse</i></a>.{' '}
             </p>
           </div>
         </div>
